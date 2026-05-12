@@ -1,5 +1,7 @@
 mod config;
 
+use axum::Router;
+use axum::routing::get;
 use dotenvy::dotenv;
 use sqlx::postgres::PgPoolOptions;
 
@@ -19,5 +21,13 @@ async fn main() {
         .await
         .expect("Failed to connect to the database");
 
-        
+    sqlx::migrate!("./migrations")
+        .run(&pool)
+        .await
+        .expect("Failed to migrate the database");
+
+    let addr =format!("{}:{}", db_config.host, db_config.port);
+    tracing::info!("Server running at http://{}", addr);
+    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+
 }
