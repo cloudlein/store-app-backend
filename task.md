@@ -50,21 +50,29 @@ store-app-backend/
 ## Development Phases
 
 ### Phase 1: Foundation, Data Model, and Logging System
-- [ ] **Initialize Rust Project**: Setup Axum, SQLx, and Serde.
-- [ ] **Database Schema**:
+- [x] **Initialize Rust Project**: Setup Axum, SQLx, and Serde.
+- [x] **Database Schema**:
     - `products`: id, title, price, description, image_url.
     - `orders`: id, total_price, items (JSONB), created_at.
-- [ ] **Advanced Logging Implementation**:
-    - [ ] Configure `tracing-subscriber` for structured console logging.
-    - [ ] Implement middleware to capture HTTP requests and responses.
-    - [ ] Setup file-based rotation logging.
+- [x] **Advanced Logging Implementation**:
+    - [x] Configure `tracing-subscriber` for structured console logging.
+    - [x] Implement middleware to capture HTTP requests and responses.
+    - [x] Setup file-based rotation logging.
 
-### Phase 2: Product API
-- [ ] **GET /api/v1/products**: Retrieve products for the main page.
+### Phase 2: Product API (CRUD)
+- [ ] **GET /api/v1/products**: List all products.
+- [ ] **GET /api/v1/products/:id**: Get a specific product by ID.
+- [ ] **POST /api/v1/products**: Create a new product.
+- [ ] **PUT /api/v1/products/:id**: Update an existing product.
+- [ ] **DELETE /api/v1/products/:id**: Delete a product.
     - Implementation location: `handlers/product.rs`, `models/product.rs`.
 
-### Phase 3: Order API
-- [ ] **POST /api/v1/orders**: Create a new order from cart data.
+### Phase 3: Order API (CRUD)
+- [ ] **GET /api/v1/orders**: List all orders.
+- [ ] **GET /api/v1/orders/:id**: Get a specific order by ID.
+- [ ] **POST /api/v1/orders**: Create a new order.
+- [ ] **PUT /api/v1/orders/:id**: Update an existing order.
+- [ ] **DELETE /api/v1/orders/:id**: Delete an order.
     - Implementation location: `handlers/order.rs`, `models/order.rs`.
 
 ### Phase 4: Documentation (Swagger/OpenAPI)
